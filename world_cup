@@ -1,0 +1,26 @@
+-- Splitting column Date_time into two wusing PARSENAME:
+
+SELECT PARSENAME (REPLACE (Date_time, '-', '.'), 1) AS time_of_day,
+  PARSENAME (REPLACE (Date_time, '-', '.'), 2) AS game_day
+FROM worldcup_2018
+
+
+ALTER TABLE Worldcup_2018
+ADD time_of_day TIME 
+
+UPDATE worldcup_2018 
+SET time_of_day = PARSENAME (REPLACE (Date_time, '-', '.'), 1) 
+
+
+ALTER TABLE Worldcup_2018
+ADD game_day DATE 
+
+UPDATE worldcup_2018 
+SET game_day = PARSENAME (REPLACE (Date_time, '-', '.'), 2)
+
+
+--Deleting column Date_time:
+
+ALTER TABLE Worldcup_2018
+DROP COLUMN Date_time
+
