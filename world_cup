@@ -1,3 +1,5 @@
+**CLEANING TABLE WORLDCUP_2018**
+
 -- Splitting column Date_time into two wusing PARSENAME:
 
 SELECT PARSENAME (REPLACE (Date_time, '-', '.'), 1) AS time_of_day,
@@ -13,7 +15,7 @@ SET time_of_day = PARSENAME (REPLACE (Date_time, '-', '.'), 1)
 
 
 ALTER TABLE Worldcup_2018
-ADD game_day DATE 
+ADD game_day nvarchar(255)
 
 UPDATE worldcup_2018 
 SET game_day = PARSENAME (REPLACE (Date_time, '-', '.'), 2)
@@ -23,4 +25,43 @@ SET game_day = PARSENAME (REPLACE (Date_time, '-', '.'), 2)
 
 ALTER TABLE Worldcup_2018
 DROP COLUMN Date_time
+
+--Deleting other columns:
+
+ALTER TABLE Worldcup_2018
+  DROP COLUMN Assistant1, Assistant2, MatchID
+
+
+**CLEANING TABLE WORLDCUPMATCHES**
+
+-- Splitting column Date_time into two wusing PARSENAME:
+
+SELECT PARSENAME (REPLACE (Date_time, '-', '.'), 1) AS time_of_day,
+  PARSENAME (REPLACE (Date_time, '-', '.'), 2) AS game_day
+FROM WorldCupMatches
+
+
+ALTER TABLE WorldCupMatches
+ADD time_of_day nvarchar(255)
+
+UPDATE WorldCupMatches
+SET time_of_day = PARSENAME (REPLACE (Date_time, '-', '.'), 1) 
+
+
+ALTER TABLE WorldCupMatches
+ADD game_day nvarchar(255)
+
+UPDATE WorldCupMatches 
+SET game_day = PARSENAME (REPLACE (Date_time, '-', '.'), 2)
+
+
+--Deleting column Date_time:
+
+ALTER TABLE WorldCupMatches
+DROP COLUMN Date_time
+
+--Deleting other columns:
+
+ALTER TABLE WorldCupMatches
+  DROP COLUMN Assistant1, Assistant2, MatchID, Home_Team_Initials, Away_Team_Initials
 
