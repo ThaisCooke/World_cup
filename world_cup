@@ -197,6 +197,70 @@ SELECT Winner, COUNT (Winner) AS most_wins
   Answer: Germany, with 4 (Considering Germany as one country, since Data splits Germany into East and West Germany. Germany FR stands for West Germany.
   Combining them would give 4. If keeping the split, then the result is Argentina, Germany FR and Netherlands, with 3 second places each)
   
+  --Which year had the most goals scored:
+  
+  SELECT Year, Country, MAX (GoalsScored) as number_of_goals
+  FROM WorldCups
+  GROUP BY Year, Country
+  ORDER BY number_of_goals DESC
+  
+  Answer: 1998 (in France) and 2014 (in Brazil) had the most number of goals scored, with 171 goals in those years
+  
+  --Which year had the least goals scored:
+  
+  SELECT Year, Country, MAX (GoalsScored) as number_of_goals
+  FROM WorldCups
+  GROUP BY Year, Country
+  ORDER BY number_of_goals 
+  
+  Answer: 1934 (in Italy) and 1930 (in Uruguay), with 70 goals in those years
+  
+  --What is the Average number of goals:
+  
+  SELECT AVG (GoalsScored) as number_of_goals
+  FROM WorldCups
+  ORDER BY number_of_goals DESC
+  
+  Answer: 121.3 goals/year
+  
+  
+  **FROM NOW ON, THE ANALYSIS HAD TO BE DONE USING THE TABLES WORLDCUPMATCHES AND WORLDCUP_2018. SINCE THERE WAS NO PRIMARY KEY, UNION WAS USED**
+  
+  --What is the maximum amount of times that the same Referee was used in different matches?
+  
+ SELECT Year, Referee, COUNT (Referee) AS number_of_matches
+FROM WorldCupMatches
+GROUP BY Referee, Year
+
+UNION
+
+SELECT Year, Referee, COUNT (Referee) AS number_of_matches
+FROM WorldCup_2018
+GROUP BY Referee, Year
+ORDER BY number_of_matches DESC
+
+Answer: 5 times. There were 4 Referees that were used in 5 different matches. Years 2006, 2010 and 2018.
+
+--Which match had the most Attendance?
+
+SELECT Year, Stage, Home_Team_Name, Away_Team_Name, Stadium, City, MAX(Attendance) as attendance_number
+FROM WorldCupMatches
+GROUP BY Attendance, Year, Stage, Home_Team_Name, Away_Team_Name, Home_team_goals, Away_team_goals, Stadium, City
+
+UNION
+
+SELECT Year, Stage, Home_Team_Name, Away_Team_Name, Stadium, City, MAX(Attendance) as attendance_number
+FROM WorldCup_2018
+GROUP BY Attendance, Year, Stage, Home_Team_Name, Away_Team_Name, Home_team_goals, Away_team_goals, Stadium, City
+ORDER BY attendance_number DESC
+
+Answer: Brazil X Uruguay, on the Finals on 1950, with 173850 people. It was on Maracana Stadium, in Rio de Janeiro
+
+
+
+  
+  
+  
   
   
   
