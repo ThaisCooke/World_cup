@@ -194,8 +194,8 @@ SELECT Winner, COUNT (Winner) AS most_wins
   GROUP BY Runners_Up
   ORDER BY most_second_place DESC
   
-  Answer: Germany, with 4 (Considering Germany as one country, since Data splits Germany into East and West Germany. Combining them would give 4. 
-  If keeping the split, then the result is Argentina, Germany FR and Netherlands, with 3 second places each)
+  Answer: Germany, with 4 (Considering Germany as one country, since Data splits Germany into East and West Germany. Germany FR stands for West Germany.
+  Combining them would give 4. If keeping the split, then the result is Argentina, Germany FR and Netherlands, with 3 second places each)
   
   
   
