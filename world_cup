@@ -176,7 +176,28 @@ WHERE year = '2014' and Stage = 'Round of 16' and home_team_name = 'Germany'
   
   
 
+**ANALIZING THE DATA**:
 
+--Country with most wins:
+
+SELECT Winner, COUNT (Winner) AS most_wins
+  FROM WorldCups
+  GROUP BY Winner
+  ORDER BY most_wins DESC
+  
+  Answer: Brazil, with 5
+  
+--Country with most second_place
+  
+  SELECT Runners_Up, COUNT (Runners_Up) AS most_second_place
+  FROM WorldCups
+  GROUP BY Runners_Up
+  ORDER BY most_second_place DESC
+  
+  Answer: Germany, with 4 (Considering Germany as one country, since Data splits Germany into East and West Germany. Combining them would give 4. 
+  If keeping the split, then the result is Argentina, Germany FR and Netherlands, with 3 second places each)
+  
+  
   
   
 
