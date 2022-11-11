@@ -9,6 +9,6 @@ World cup 2018: https://data.world/rezaghari/fifa-worldcup-2018
 
 There were 3 Tables: WorldCups, WorldCupMatches and WorldCup_2018
 
-The tables WorldCup offered a summary of the World Cup Tournaments from 1930-2014, while WorldCupMatches had more details about each match from each year
+The table WorldCups offered a summary of the World Cup Tournaments from 1930-2014, while WorldCupMatches had more details about each match from each year
 
 The Table WorldCup_2018 contains all the Data for that Years Tournament
